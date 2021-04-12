@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5701433654426609356}
   - component: {fileID: 5450574257432099061}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Chair05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 8869241011967203711}
   - component: {fileID: 5528736031520495322}
   - component: {fileID: 7736888842799440400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Meshes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,6 +142,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shadow
       objectReference: {fileID: 0}
+    - target: {fileID: 5257775371108673867, guid: 43be6674db71242aea37411b911b965f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 9127678306721471320, guid: 43be6674db71242aea37411b911b965f,
         type: 3}
       propertyPath: m_RootOrder
@@ -150,17 +155,17 @@ PrefabInstance:
     - target: {fileID: 9127678306721471320, guid: 43be6674db71242aea37411b911b965f,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9127678306721471320, guid: 43be6674db71242aea37411b911b965f,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9127678306721471320, guid: 43be6674db71242aea37411b911b965f,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 9127678306721471320, guid: 43be6674db71242aea37411b911b965f,
         type: 3}
@@ -175,7 +180,7 @@ PrefabInstance:
     - target: {fileID: 9127678306721471320, guid: 43be6674db71242aea37411b911b965f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.163
       objectReference: {fileID: 0}
     - target: {fileID: 9127678306721471320, guid: 43be6674db71242aea37411b911b965f,
         type: 3}

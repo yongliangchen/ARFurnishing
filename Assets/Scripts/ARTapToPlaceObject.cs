@@ -6,9 +6,6 @@ using UnityEngine.XR.ARSubsystems;
 /// <summary>摆放模型</summary>
 public class ARTapToPlaceObject : MonoBehaviour
 {
-    /// <summary>是否禁用</summary>
-    public bool isDisable { get; set; } = true;
-
     /// <summary>需要摆放的模型</summary>
     public GameObject objectToPlace { get; set; }
 
@@ -41,7 +38,11 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (isTouchUI()) return;
 
-        if (isDisable || objectToPlace == null) return;
+        if (StateManager.Instance.state != EnumState.CreateModel || objectToPlace == null)
+        {
+            placementIndicator?.SetActive(false);
+            return;
+        }
 
         updatePlacementPose();
         updatePlacementIndicator();
@@ -91,13 +92,14 @@ public class ARTapToPlaceObject : MonoBehaviour
     /// <summary>放置物件</summary>
     private void placeObject()
     {
-        if (objectToPlace == null) return; 
-        Instantiate(objectToPlace, m_PlacementPose.position, m_PlacementPose.rotation);
+        if (objectToPlace == null) return;
+        GameObject item = Instantiate(objectToPlace, m_PlacementPose.position, m_PlacementPose.rotation);
 
-        isDisable = true;
+        StateManager.Instance.ChangeState(EnumState.Main);
         placementIndicator.SetActive(false);
     }
 
+    /// <summary>判断是否点击在UI上面</summary>
     private bool isTouchUI()
     {
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)

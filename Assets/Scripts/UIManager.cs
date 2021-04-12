@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     private GameObject m_SelectModelsPanel;
     /// <summary>编辑模型UI面板</summary>
     private GameObject m_EditModelPanel;
+    /// <summary>通知面板</summary>
+    private GameObject m_NoticePanel;
 
     /// <summary>所有椅子的模型</summary>
     private Dictionary<string, GameObject> m_DicAllModels = new Dictionary<string, GameObject>();
@@ -51,6 +53,9 @@ public class UIManager : MonoBehaviour
         m_MainPanel = transform.Find("MainPanel").gameObject;
         m_SelectModelsPanel = transform.Find("SelectModelsPanel").gameObject;
         m_EditModelPanel= transform.Find("EditModelPanel").gameObject;
+        m_NoticePanel= transform.Find("NoticePanel").gameObject;
+        m_NoticePanel.SetActive(false);
+        m_NoticePanel.GetComponent<Button>().onClick.AddListener(() => { m_NoticePanel.SetActive(false); });
 
         m_PreviewPrefab = m_SelectModelsPanel.transform.Find("ScrollRect/Item").gameObject;
         m_PreviewParent = m_SelectModelsPanel.transform.Find("ScrollRect/Viewport");
@@ -75,6 +80,13 @@ public class UIManager : MonoBehaviour
     private void OnDestroy()
     {
         StateManager.Instance.onChangeState -= onChangeState;
+    }
+
+    /// <summary>显示通知</summary>
+    public void ShowNotice(string text)
+    {
+        m_NoticePanel.SetActive(true);
+        m_NoticePanel.transform.Find("Text").GetComponent<Text>().text = text;
     }
 
     /// <summary>加载模型</summary>
@@ -124,7 +136,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void onChangeState(EnumState state)
+    private void onChangeState(EnumState state)
     {
         m_MainPanel.SetActive(state == EnumState.Main || state == EnumState.CreateModel);
         m_SelectModelsPanel.SetActive(state == EnumState.SelectModel);

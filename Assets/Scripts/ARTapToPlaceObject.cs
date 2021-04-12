@@ -94,6 +94,8 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         if (objectToPlace == null) return;
         GameObject item = Instantiate(objectToPlace, m_PlacementPose.position, m_PlacementPose.rotation);
+        item.name = objectToPlace.name;
+        item.transform.Find("Selected").gameObject.SetActive(false);
 
         StateManager.Instance.ChangeState(EnumState.Main);
         placementIndicator.SetActive(false);
